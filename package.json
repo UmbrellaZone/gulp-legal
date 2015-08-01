@@ -1,0 +1,22 @@
+{
+  "name": "gulp-umbrella",
+  "version": "1.0.0",
+  "description": "Used to add umbrella data to the fileobject for use in plugins like jade.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/UmbrellaZone/gulp-umbrella.git"
+  },
+  "keywords": [
+    "legal"
+  ],
+  "author": "Smart Coordination GmbH <office@umbrella.zone> (https://umbrella.zone)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/UmbrellaZone/gulp-umbrella/issues"
+  },
+  "homepage": "https://github.com/UmbrellaZone/gulp-umbrella"
+}
