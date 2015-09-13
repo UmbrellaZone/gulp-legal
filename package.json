@@ -20,7 +20,7 @@
   },
   "homepage": "https://github.com/UmbrellaZone/gulp-umbrella",
   "dependencies": {
-    "through2": "^1.2.0",
+    "through2": "^2.0.0",
     "request": "^2.61.0"
   }
 }
