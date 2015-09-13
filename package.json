@@ -1,6 +1,6 @@
 {
   "name": "gulp-umbrella",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Used to add umbrella data to the fileobject for use in plugins like jade.",
   "main": "index.js",
   "scripts": {
