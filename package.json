@@ -21,6 +21,7 @@
   "homepage": "https://github.com/UmbrellaZone/gulp-umbrella",
   "dependencies": {
     "through2": "^2.0.0",
+    "remotefile": "latest",
     "request": "^2.61.0"
   }
 }
