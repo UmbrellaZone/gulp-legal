@@ -1,0 +1,10 @@
+language: node_js
+deploy:
+  provider: npm
+  email: npm@smart-coordination.com
+  api_key:
+    secure: a7yi7QmLiDUemepHbCytHVh3q+jXQa/n38xvqSPj8+7CnUZUs+3H/4jn1pUXFAFsrOE9RHbw/dT0uv7/eRAUuTfW0ZAw95Touf4TbFRUBBG7nt6XyiTS/JtTSaCXZT63o+HdST2D/uH+SfC8+UCE8vIGPRpXOWI5vNVUShiirWZkEr1n43e0Nb0flQROh/IidQArr/qa5kpMbytK13Fz8+JJn71+Jbm2lACUZJVjVp67QVPl+Ss5Kuh5ZKNb7mb+Leq+Xffwnp9gQvJGALTqsDnHxlpJ00EgktjhiFH06e8PKvTypdC7BdKLaxTq5SsxB0ueCj1uhQuLHSN1bilwk1jw1sYE36OQdfoQRhfTVVVmPvk7KDbAlSMOtARlhyVy5G3HFJUQm6az4sex6Qi88EVcIeio0dxQaI1MymFUnLGM/IGUl60gj3LvPUOCeIy79OJz4s2ZDwKfunlYdj+8G81zN+6vQRrxRZotT7AOHsO4z4WK+Lbw6Pm5oUYRVuWwZEeJs6M0Z93wpEimfTw1G9iWsZKV62cFW+8KArmzALNowusLpnpaLyeJ6S1OX7oc5anlL+7IHqRfdeag4xyD583tlUytpAXyddgy9wqsUoD2fDaGhuSDHn8H4yiM9mSFO7X6itHIIUg/sbDKbkP5d+PBmZByYwf87TqT1OabaJI=
+  on:
+    branch: master
+    tags: true
+    repo: UmbrellaZone/gulp-umbrella

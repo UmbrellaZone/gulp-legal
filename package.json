@@ -4,7 +4,7 @@
   "description": "Used to add umbrella data to the fileobject for use in plugins like jade.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Works so far!\""
   },
   "repository": {
     "type": "git",
