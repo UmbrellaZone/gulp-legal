@@ -1,8 +1,7 @@
 /// <reference path="typings/tsd.d.ts" />
-var path, through;
-var https = require("https");
-through = require("through2");
-path = require("path");
+var through = require("through2");
+var path = require("path");
+var remotefile = require("remotefile");
 module.exports = function (options, mojo) {
     /* -------------------------------------------------------------------------
     ------------------------- helper functions ----------------------------------
@@ -37,26 +36,9 @@ module.exports = function (options, mojo) {
        ------------------------------------------------------------------------------------ */
         var umbrella = {};
         //get the jade Template from GitHub
-        var request = require('request');
-        request.get('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/00dev/jade/index.jade', function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                umbrella.jadeTemplate = body;
-            }
-            else {
-                console.log('could not get jade template for the umbrella.zone imprint');
-            }
-            ;
-        });
-        //get the legal.json file
-        request.get('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/01build/content.json', function (error, response, body) {
-            if (!error && response.statusCode == 200) {
-                umbrella.legalJson = body;
-            }
-            else {
-                console.log('could not get jade template for the umbrella.zone imprint');
-            }
-            ;
-        });
+        umbrella.jadeTemplate = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/00dev/jade/index.jade');
+        //get the legalTexts.json file
+        umbrella.legalTexts = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/01build/content.json');
         //append legal.json from file.content to file.data
         umbrella.contactJson = String(file.contents);
         /* ------------------------------------------------------------------------------------
