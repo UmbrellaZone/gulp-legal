@@ -4,7 +4,7 @@
   "description": "Used to add umbrella data to the fileobject for use in plugins like jade.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Works so far!\""
+    "test": "cd ts/compile/ && gulp"
   },
   "repository": {
     "type": "git",
