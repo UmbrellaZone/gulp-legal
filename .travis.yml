@@ -1,11 +1,11 @@
 language: node_js
 before_install:
-  - nvm install stable
-  - node -v
-  - npm -v
-  - npm install -g gulp
-  - npm install gulp
-  - npm install gulp-typescript
+- nvm install stable
+- node -v
+- npm -v
+- npm install -g gulp
+- npm install gulp
+- npm install gulp-typescript
 deploy:
   provider: npm
   email: npm@smart-coordination.com
@@ -14,3 +14,6 @@ deploy:
   on:
     tags: true
     repo: UmbrellaZone/gulp-umbrella
+notifications:
+  slack:
+    secure: C+gLjTOdmIjJ+vwb/N5HyWIxXOJVtEu3e4X8k9vjfOnAXPZAnMwx3JVFGQxKz7PGcr49taYm2uDUGL7lRmYvj0zGy36Kadgc3lHBn+Cf0JL47VIrP2aVwf5DIfXJoVx7Fx3gFv59MFrcsoEqOg2g6lP1kzMBGiMo2zKz46nMnSfTG/ztIct373r3PtucRbCotg6OQcDXNsdgTJFdx1tsgRbno/1+XEJeoMpPNofUjTozwwPWAeimSUKkrtD0vYoqetz+mUuWVuha9+zEqt9TcF5pCxYAP1YYw4l6RVEi3hxOK176tDy2SwqEEZM4OGQg1cP1Cw08X0pQXHCg55JPnDWJeAk3TsckxrhNb65C5GOwRP+luM3+8sFzEvg/f1aGVmuAwMJsiNOB4arlT0fwtQQmLCbYvWSUsj5m9lVHpYy2ttz8DI/dYHdShqKdXq4TEHrFjYCU8/S68YnwS9vJ8Twfl/96SK+sUwy4c/jrXzYflTHZFJ5UbovNzcbvlNCm2XuUPLQ+YKp3OxWI5bEqDn4i3zJVEMmLA1c46ueQmt7m6lkWkWqvqRlNyr+HdzyArZi2BiWMgIiQlygYwPOH0Z+DhIt8UCjOqtqpg4uzMYssM3lQb3Gr2PRMihw2TzCTAuBDr4jOFQ9C0KxtM1+4EldYVjo+XXrBOA/EeUi3WN8=
