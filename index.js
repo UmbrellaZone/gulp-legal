@@ -2,6 +2,8 @@
 var through = require("through2");
 var path = require("path");
 var remotefile = require("remotefile");
+var smartparam = require("smartparam");
+
 module.exports = function (options, mojo) {
     /* -------------------------------------------------------------------------
     ------------------------- helper functions ----------------------------------
@@ -37,8 +39,8 @@ module.exports = function (options, mojo) {
         var umbrella = {};
         //get the jade Template from GitHub
         umbrella.jadeTemplate = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/00dev/jade/index.jade');
-        //get the legalTexts.json file
-        umbrella.legalTexts = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/01build/content.json');
+        //get the legalTexts.json file and parse it
+        umbrella.legalTexts = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/01build/content.json',{parseJson:true});
         //append legal.json from file.content to file.data
         umbrella.contactJson = String(file.contents);
         /* ------------------------------------------------------------------------------------
