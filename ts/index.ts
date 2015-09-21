@@ -1,23 +1,23 @@
 /// <reference path="typings/tsd.d.ts" />
+var bl = require("beautylog");
 var through = require("through2");
 var path = require("path");
 var remotefile = require("remotefile");
+var smartparam = require("smartparam");
 
-module.exports = (options,mojo = undefined) => {
+/**
+ * returns a gulp stream object.
+ * @param options
+ * @returns {any}
+ */
+module.exports = (options:any) => {
     /* -------------------------------------------------------------------------
     ------------------------- helper functions ----------------------------------
     --------------------------------------------------------------------------
     */
     
-    if (mojo != undefined) {
-        mojo.log("now prepocessing blog");
-    } else {
-        console.log('you do not seem to use mojo.io');
-        mojo = {}
-        mojo.log = function(logthis) {
-            console.log(logthis);
-        }
-    }
+    var logBool:boolean = false;
+    if (options.logging == true) logBool = true;
 
     /*--------------------------------------------------------------------------
     ---------------------- returned stream --------------------------------------
@@ -30,7 +30,7 @@ module.exports = (options,mojo = undefined) => {
             return;
         }
         if (file.isStream()) {
-            mojo.log("streaming not supported");
+            bl.log("streaming not supported");
             return;
         }
         
@@ -53,8 +53,8 @@ module.exports = (options,mojo = undefined) => {
         ------------ build the file.data object -----------------------------------------------
         ------------------------------------------------------------------------------------ */
         
-        // create the file.data object in case it does not yet exist
-        file.data = file.data | {};
+        // add data to file
+        smartparam(file, 'data');
         
         // add legal object to file.data
         file.data.legal = {};

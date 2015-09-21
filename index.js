@@ -1,25 +1,22 @@
 /// <reference path="typings/tsd.d.ts" />
+var bl = require("beautylog");
 var through = require("through2");
 var path = require("path");
 var remotefile = require("remotefile");
-var smartparam = require("smartparam");
-
-module.exports = function (options, mojo) {
+var smartparam = require("");
+/**
+ * returns a gulp stream object.
+ * @param options
+ * @returns {any}
+ */
+module.exports = function (options) {
     /* -------------------------------------------------------------------------
     ------------------------- helper functions ----------------------------------
     --------------------------------------------------------------------------
     */
-    if (mojo === void 0) { mojo = undefined; }
-    if (mojo != undefined) {
-        mojo.log("now prepocessing blog");
-    }
-    else {
-        console.log('you do not seem to use mojo.io');
-        mojo = {};
-        mojo.log = function (logthis) {
-            console.log(logthis);
-        };
-    }
+    var logBool = false;
+    if (options.logging == true)
+        logBool = true;
     /*--------------------------------------------------------------------------
     ---------------------- returned stream --------------------------------------
     --------------------------------------------------------------------------
@@ -30,7 +27,7 @@ module.exports = function (options, mojo) {
             return;
         }
         if (file.isStream()) {
-            mojo.log("streaming not supported");
+            bl.log("streaming not supported");
             return;
         }
         /* ------------------------------------------------------------------------------------
@@ -39,15 +36,15 @@ module.exports = function (options, mojo) {
         var umbrella = {};
         //get the jade Template from GitHub
         umbrella.jadeTemplate = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/00dev/jade/index.jade');
-        //get the legalTexts.json file and parse it
-        umbrella.legalTexts = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/01build/content.json',{parseJson:true});
+        //get the legalTexts.json file
+        umbrella.legalTexts = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/01build/content.json');
         //append legal.json from file.content to file.data
         umbrella.contactJson = String(file.contents);
         /* ------------------------------------------------------------------------------------
         ------------ build the file.data object -----------------------------------------------
         ------------------------------------------------------------------------------------ */
-        // create the file.data object in case it does not yet exist
-        file.data = file.data | {};
+        // add data to file
+        smartparam(file, 'data');
         // add legal object to file.data
         file.data.legal = {};
         //parse the legalContactJsonString to the file.data.legal object
