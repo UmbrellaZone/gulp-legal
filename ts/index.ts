@@ -7,17 +7,17 @@ var smartparam = require("smartparam");
 
 /**
  * returns a gulp stream object.
- * @param options
+ * @param umbrellaOptions
  * @returns {any}
  */
-module.exports = (options:any) => {
+module.exports = (umbrellaOptions:any = undefined) => {
     /* -------------------------------------------------------------------------
     ------------------------- helper functions ----------------------------------
     --------------------------------------------------------------------------
     */
     
     var logBool:boolean = false;
-    if (options.logging == true) logBool = true;
+    if (umbrellaOptions != undefined && umbrellaOptions.logging == true) logBool = true;
 
     /*--------------------------------------------------------------------------
     ---------------------- returned stream --------------------------------------
@@ -53,11 +53,16 @@ module.exports = (options:any) => {
         ------------ build the file.data object -----------------------------------------------
         ------------------------------------------------------------------------------------ */
         
-        // add data to file
+        // add data to file, smartparam takes care of looking if it already exists.
         smartparam(file, 'data');
         
         // add legal object to file.data
         file.data.legal = {};
+        if(umbrellaOptions != undefined){
+            file.data.legal.options = umbrellaOptions;
+        } else {
+            file.data.legal.options = {};
+        }
         
         //parse the legalContactJsonString to the file.data.legal object
         file.data.legal.contact = JSON.parse(umbrella.contactJson);

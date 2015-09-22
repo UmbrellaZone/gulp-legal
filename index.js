@@ -3,19 +3,20 @@ var bl = require("beautylog");
 var through = require("through2");
 var path = require("path");
 var remotefile = require("remotefile");
-var smartparam = require("");
+var smartparam = require("smartparam");
 /**
  * returns a gulp stream object.
- * @param options
+ * @param umbrellaOptions
  * @returns {any}
  */
-module.exports = function (options) {
+module.exports = function (umbrellaOptions) {
     /* -------------------------------------------------------------------------
     ------------------------- helper functions ----------------------------------
     --------------------------------------------------------------------------
     */
+    if (umbrellaOptions === void 0) { umbrellaOptions = undefined; }
     var logBool = false;
-    if (options.logging == true)
+    if (umbrellaOptions != undefined && umbrellaOptions.logging == true)
         logBool = true;
     /*--------------------------------------------------------------------------
     ---------------------- returned stream --------------------------------------
@@ -43,10 +44,16 @@ module.exports = function (options) {
         /* ------------------------------------------------------------------------------------
         ------------ build the file.data object -----------------------------------------------
         ------------------------------------------------------------------------------------ */
-        // add data to file
+        // add data to file, smartparam takes care of looking if it already exists.
         smartparam(file, 'data');
         // add legal object to file.data
         file.data.legal = {};
+        if (umbrellaOptions != undefined) {
+            file.data.legal.options = umbrellaOptions;
+        }
+        else {
+            file.data.legal.options = {};
+        }
         //parse the legalContactJsonString to the file.data.legal object
         file.data.legal.contact = JSON.parse(umbrella.contactJson);
         //replace file.content with the jade template file
