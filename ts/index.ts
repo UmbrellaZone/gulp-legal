@@ -1,9 +1,7 @@
 /// <reference path="typings/tsd.d.ts" />
-var bl = require("beautylog");
 var through = require("through2");
 var path = require("path");
-var remotefile = require("remotefile");
-var smartparam = require("smartparam");
+var pr = require("pushrocks");
 
 /**
  * returns a gulp stream object.
@@ -30,7 +28,7 @@ module.exports = (umbrellaOptions:any = undefined) => {
             return;
         }
         if (file.isStream()) {
-            bl.log("streaming not supported");
+            pr.beautylog.log("streaming not supported");
             return;
         }
         
@@ -40,10 +38,10 @@ module.exports = (umbrellaOptions:any = undefined) => {
         var umbrella:any = {};
         
         //get the jade Template from GitHub
-        umbrella.jadeTemplate = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/00dev/jade/index.jade');
+        umbrella.jadeTemplate = pr.remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/01build/jade/index.jade');
         
         //get the legalTexts.json file
-        umbrella.legalTexts = remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/01build/content.json');
+        umbrella.legalTexts = pr.remotefile('https://raw.githubusercontent.com/UmbrellaZone/umbrella-legal/master/01build/content.json');
         
         //append legal.json from file.content to file.data
         umbrella.contactJson = String(file.contents);
@@ -54,7 +52,7 @@ module.exports = (umbrellaOptions:any = undefined) => {
         ------------------------------------------------------------------------------------ */
         
         // add data to file, smartparam takes care of looking if it already exists.
-        smartparam(file, 'data');
+        pr.smartparam(file, 'data');
         
         // add legal object to file.data
         file.data.legal = {};

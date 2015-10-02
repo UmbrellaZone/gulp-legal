@@ -58,3 +58,4 @@ module.exports = function (umbrellaOptions) {
         file.contents = new Buffer(umbrella.jadeTemplate);
     });
 };
+//# sourceMappingURL=index.js.map
