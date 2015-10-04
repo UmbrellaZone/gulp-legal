@@ -21,12 +21,12 @@
   },
   "homepage": "https://github.com/UmbrellaZone/gulp-umbrella",
   "dependencies": {
-    "pushrocks": "latest",
-    "request": "^2.61.0",
-    "through2": "^2.0.0"
+    "pushrocks": "1.0.5",
+    "request": "2.64.0",
+    "through2": "2.0.0"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-typescript": "^2.9.1"
+    "gulp": "3.9.0",
+    "gulp-typescript": "2.9.2"
   }
 }
