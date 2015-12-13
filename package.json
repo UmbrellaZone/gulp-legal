@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "(cd ts/compile/ && gulp)",
-    "reinstall": "(rm -r node_modules && npm install)"
+    "reinstall": "(rm -r node_modules && npm install)",
+    "release": "(git pull origin master) && (npm version patch && git checkout release && git merge master && git checkout master) && npm run push",
+    "update": "(git checkout master && git pull origin master && npm install)",
+    "upgrade": "(npm run update) && (ncu upgradeAll && npm install)"
   },
   "repository": {
     "type": "git",
@@ -21,12 +24,12 @@
   },
   "homepage": "https://github.com/UmbrellaZone/gulp-umbrella",
   "dependencies": {
-    "pushrocks": "1.0.17",
-    "request": "2.64.0",
+    "pushrocks": "1.0.25",
+    "request": "2.67.0",
     "through2": "2.0.0"
   },
   "devDependencies": {
     "gulp": "3.9.0",
-    "gulp-typescript": "2.9.2"
+    "gulp-typescript": "2.10.0"
   }
 }
