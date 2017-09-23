@@ -25,7 +25,7 @@
   "homepage": "https://github.com/UmbrellaZone/gulp-umbrella",
   "dependencies": {
     "pushrocks": "1.0.25",
-    "request": "2.67.0",
+    "request": "2.74.0",
     "through2": "2.0.0"
   },
   "devDependencies": {
